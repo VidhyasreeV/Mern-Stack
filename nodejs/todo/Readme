@@ -1,0 +1,7 @@
+Todo list using node js
+    input using command line arguments.
+    To add into the list: node app.js addTodo --title="Project" --list="project1,project2"
+    To list todo: node app.js listTodos
+    To delete todo: node app.js deleteTodo --title="Project"
+    To search/display todo: node app.js readTodo --title="Project" 
+    
