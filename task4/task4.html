@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Largest Three Distinct Numbers</title>
+    <script>
+        function findLargestThreeDistinctNumbers() {
+
+            inputArray = document.getElementById("inputArray").value;
+
+            arr = inputArray.split(" ").map(Number);
+
+            let largest = -Infinity;
+            let secondLargest = -Infinity;
+            let thirdLargest = -Infinity;
+            let i;
+            for (i = 0; i < arr.length; i++) {
+                Num = arr[i];
+                if (Num > largest) {
+                    thirdLargest = secondLargest;
+                    secondLargest = largest;
+                    largest = Num;
+                } else if (Num > secondLargest && Num < largest) {
+                    thirdLargest = secondLargest;
+                    secondLargest = Num;
+                } else if (Num > thirdLargest && Num < secondLargest) {
+                    thirdLargest = Num;
+                }
+            }
+            document.getElementById("output1").innerHTML = `Largest Three Distinct Numbers: ${largest}, ${secondLargest}, ${thirdLargest}`;
+            //console.log(largest, secondLargest, thirdLargest);
+
+        }
+        function findDistinctNumbers() {
+            inputArray = document.getElementById("inputArray").value;
+
+            arr = inputArray.split(" ").map(Number);
+
+            distinctNumbers = [];
+
+            for (let i = 0; i < arr.length; i++) {
+                Num = arr[i];
+                let isDistinct = true;
+
+                for (let j = 0; j < i; j++) {
+                    if (Num === arr[j]) {
+                        isDistinct = false;
+                        break;
+                    }
+                }
+
+                if (isDistinct) {
+                    distinctNumbers.push(Num);
+                }
+            }
+
+            document.getElementById("output2").innerHTML = `Distinct Numbers: ${distinctNumbers}`;
+            //console.log(distinctNumbers);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Largest Three Distinct Numbers</h1>
+    <label for="inputArray">Enter an array of numbers (space-separated):</label><br>
+    <input type="text" id="inputArray"><br>
+    <button onclick="findLargestThreeDistinctNumbers()">Find Largest Three Distinct Numbers</button><br>
+    <div id="output1"></div>
+    <button onclick="findDistinctNumbers()">Find Distinct Numbers</button><br>
+    <div id="output2"></div>
+</body>
+
+</html>
