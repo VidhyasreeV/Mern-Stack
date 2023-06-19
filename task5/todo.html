@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Checklist</title>
+  <link href="/dist/output.css" rel="stylesheet">
+  <style>
+    ul {
+      list-style-type: none;
+    }
+  </style>
+  <script>
+    function addItem() {
+      var itemInput = document.getElementById("itemInput");
+      var itemText = itemInput.value;
+
+      if (itemText !== "") {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = itemText + " <button onclick='editItem(this)'>Edit</button>&nbsp;&nbsp; <button onclick='deleteItem(this)'>Delete</button>";
+
+        document.getElementById("itemList").appendChild(listItem);
+        itemInput.value = "";
+      }
+    }
+
+    function editItem(button) {
+      var listItem = button.parentNode;
+      var itemText = listItem.firstChild.textContent;
+
+      var newText = prompt("Edit item", itemText);
+      if (newText !== null && newText !== "") {
+        listItem.firstChild.textContent = newText;
+      }
+    }
+
+    function deleteItem(button) {
+      var listItem = button.parentNode;
+      listItem.parentNode.removeChild(listItem);
+    }
+  </script>
+</head>
+
+<body>
+  <div class="flex font-sans font-semibold text-center justify-center ">
+    <h1>
+      <p class="text-orange-500 underline decoration-2 ">Your To-Do</p>
+    </h1>
+    <div class="font-sans ">
+      <input type="text" id="itemInput" placeholder="Enter item">
+      &nbsp;&nbsp;
+      <button onclick="addItem()">Add</button>
+      <ul id="itemList"></ul>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
