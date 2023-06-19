@@ -6,7 +6,7 @@ Packages:
 
 
 Todo list using node js
-    input using command line arguments.
+    input using command line arguments and todo will be saved into a file
     To add into the list: node app.js addTodo --title="Project" --list="project1,project2"
     To list todo: node app.js listTodos
     To delete todo: node app.js deleteTodo --title="Project"
